@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Stegano on R3zp3ct0r</title>
+        <link>https://example.com/categories/stegano/</link>
+        <description>Recent content in Stegano on R3zp3ct0r</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>R3zp3ct0r</copyright>
+        <lastBuildDate>Sat, 12 Oct 2024 16:54:04 +0700</lastBuildDate><atom:link href="https://example.com/categories/stegano/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>[Cyber Strike Competition 1.0 CTF 2024] - Stegano</title>
+        <link>https://example.com/p/cyber-strike-competition-1.0-ctf-2024-stegano/</link>
+        <pubDate>Sat, 12 Oct 2024 16:54:04 +0700</pubDate>
+        
+        <guid>https://example.com/p/cyber-strike-competition-1.0-ctf-2024-stegano/</guid>
+        <description>&lt;img src="https://example.com/p/cyber-strike-competition-1.0-ctf-2024-stegano/image-43.png" alt="Featured image of post [Cyber Strike Competition 1.0 CTF 2024] - Stegano" /&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-stegano/image-1.png&#34;
+	width=&#34;2008&#34;
+	height=&#34;1577&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-stegano/image-1_hu1485692534006786489.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-stegano/image-1_hu13918773768607908103.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Cyber Strike Competition 1.0&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;127&#34;
+		data-flex-basis=&#34;305px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;stegano&#34;&gt;Stegano
+&lt;/h1&gt;&lt;h2 id=&#34;eksplorasi-gambar-terenkripsi&#34;&gt;Eksplorasi Gambar Terenkripsi
+&lt;/h2&gt;&lt;p&gt;Pada write up ini dibuat, sayangnya kondisi event ctf pada website nya sudah tutup, sehingga saya lupa untuk melakukan screenshoot soal nya.&lt;/p&gt;
+&lt;p&gt;Intinya pada soal kali ini, terdapat sebuah file gambar .png. Untuk mendapatkan flag nya perlu mencari di dalam gambar tersebut. Tampilan dari ctf.png ini hanya berupa tampilan warna putih seperti dibawah berikut:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-stegano/image-41.png&#34;
+	width=&#34;346&#34;
+	height=&#34;349&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-stegano/image-41_hu9168933068031520362.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-stegano/image-41_hu10095284077736751101.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-41&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;99&#34;
+		data-flex-basis=&#34;237px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Disini hal yang saya lakukan yaitu mengecek informasi pada gambar tersebut, seperti ‘file’, ‘exiftool’, dan ‘strings’.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-stegano/image-42.png&#34;
+	width=&#34;873&#34;
+	height=&#34;584&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-stegano/image-42_hu1324694209619412121.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-stegano/image-42_hu12878608172741086800.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-42&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;149&#34;
+		data-flex-basis=&#34;358px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Dari hasil informasi, sebenarnya tidak ada yang menarik. Tetapi dari informasi tersebut bahwa file ctf.png ini memang benar format PNG.&lt;/p&gt;
+&lt;p&gt;Lalu saya mencoba mengikuti metode dari stegano-tricks &lt;a class=&#34;link&#34; href=&#34;https://book.hacktricks.xyz/crypto-and-stego/stego-tricks&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://book.hacktricks.xyz/crypto-and-stego/stego-tricks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Fokus pada bagian zsteg, karna format file ini yaitu png.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-stegano/image-43.png&#34;
+	width=&#34;809&#34;
+	height=&#34;283&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-stegano/image-43_hu7290499268610004586.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-stegano/image-43_hu4708125183229384886.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-43&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;285&#34;
+		data-flex-basis=&#34;686px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Hasil dari zsteg, dapat menampilkan sebuah flag&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-stegano/image-44.png&#34;
+	width=&#34;647&#34;
+	height=&#34;80&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-stegano/image-44_hu18429150026239530407.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-stegano/image-44_hu9984927228232806065.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-44&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;808&#34;
+		data-flex-basis=&#34;1941px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;flag: CTF{hidden_flag}&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

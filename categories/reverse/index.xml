@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Reverse on R3zp3ct0r</title>
+        <link>https://example.com/categories/reverse/</link>
+        <description>Recent content in Reverse on R3zp3ct0r</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>R3zp3ct0r</copyright>
+        <lastBuildDate>Sat, 12 Oct 2024 16:54:04 +0700</lastBuildDate><atom:link href="https://example.com/categories/reverse/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>[Cyber Strike Competition 1.0 CTF 2024] - Reverse</title>
+        <link>https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/</link>
+        <pubDate>Sat, 12 Oct 2024 16:54:04 +0700</pubDate>
+        
+        <guid>https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/</guid>
+        <description>&lt;img src="https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-63.png" alt="Featured image of post [Cyber Strike Competition 1.0 CTF 2024] - Reverse" /&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-1.png&#34;
+	width=&#34;2008&#34;
+	height=&#34;1577&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-1_hu1485692534006786489.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-1_hu13918773768607908103.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Cyber Strike Competition 1.0&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;127&#34;
+		data-flex-basis=&#34;305px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Reverse Engineering&lt;/p&gt;
+&lt;p&gt;Pada soal-soal reverse engineering ini, disini ada ‘celah’ pada setiap soal nya. Celah yang dimaksud yaitu untuk mendapatkan flag nya tanpa harus secara ‘reverse’, jadi cukup dengan melihat isi file nya, dan akan muncul flag nya tanpa harus di reverse engineering. Jadi setiap soal yang saya lakukan untuk mendapatkan flag nya menggunakan cara yang sama.&lt;/p&gt;
+&lt;p&gt;Sayangnya pada writeup ini dibuat, saya tidak cukup waktu untuk melakukan screenshoot setiap soal-soalnya.&lt;/p&gt;
+&lt;h2 id=&#34;mystery-dungeon&#34;&gt;Mystery Dungeon
+&lt;/h2&gt;&lt;p&gt;Oke langsung saya disini saya mengecek isi file nya dengan “cat mystery_dungeon”&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-54.png&#34;
+	width=&#34;1438&#34;
+	height=&#34;629&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-54_hu3224450468913858843.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-54_hu3090480793699175092.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-54&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;228&#34;
+		data-flex-basis=&#34;548px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Dari hasil tersebut, sebenarnya sudah keliatan flag nya, tetapi disini saya pake strings dan grep agar lebih jelas flag nya&lt;/p&gt;
+&lt;p&gt;strings mystery_dungeon | grep &amp;ldquo;CTF{&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-55.png&#34;
+	width=&#34;443&#34;
+	height=&#34;78&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-55_hu13391834476369791497.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-55_hu17638568373882546811.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-55&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;567&#34;
+		data-flex-basis=&#34;1363px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Dari hasil tersebut, terdapat 2 flag. Tetapi kemungkinan key untuk mendapatkan dari program tersebut yaitu “CTF{give_me_the_key}”. Tetapi untuk memastikan nya, saya coba jalankan program nya&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-56.png&#34;
+	width=&#34;448&#34;
+	height=&#34;132&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-56_hu13907477871960229128.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-56_hu9617469283554312943.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-56&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;339&#34;
+		data-flex-basis=&#34;814px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Lalu masukan key nya CTF{give_me_the_key}&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-57.png&#34;
+	width=&#34;555&#34;
+	height=&#34;110&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-57_hu7635118348440139918.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-57_hu8211508484010815308.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-57&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;504&#34;
+		data-flex-basis=&#34;1210px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Maka flag nya CTF{hidden_flag_here}&lt;/p&gt;
+&lt;p&gt;flag: CTF{hidden_flag_here}&lt;/p&gt;
+&lt;h2 id=&#34;quantum&#34;&gt;Quantum
+&lt;/h2&gt;&lt;p&gt;Pada soal ini, terdapat 2 file yaitu “key.txt” “quantum_crypt”&lt;/p&gt;
+&lt;p&gt;isi key.txt&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-58.png&#34;
+	width=&#34;405&#34;
+	height=&#34;181&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-58_hu8108392251685045896.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-58_hu4508361829738196024.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-58&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;223&#34;
+		data-flex-basis=&#34;537px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;isi quantum_crypt&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-59.png&#34;
+	width=&#34;1444&#34;
+	height=&#34;726&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-59_hu3662203779009561527.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-59_hu502335356540203100.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-59&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;477px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Dari melihat isi file nya, terlihat isi flag nya. Akan tetapi disini saya coba cek lagi dengan strings dan grep&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-60.png&#34;
+	width=&#34;449&#34;
+	height=&#34;83&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-60_hu14226477396309756628.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-60_hu11263065474462360129.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-60&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;540&#34;
+		data-flex-basis=&#34;1298px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;CTF{quantum_rulez}&lt;/p&gt;
+&lt;p&gt;CTF{quantum_is_the_future}&lt;/p&gt;
+&lt;p&gt;Untuk memastikan nya, disini saya coba jalankan programnya&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-61.png&#34;
+	width=&#34;501&#34;
+	height=&#34;157&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-61_hu8876134993154675458.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-61_hu8921414902803850576.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-61&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;319&#34;
+		data-flex-basis=&#34;765px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Karna tidak tau nomor berapa untuk membuka secret key nya, disini saya langsung coba melihat flow nya dengan ida64&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-62.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;850&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-62_hu4549816155875766170.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-62_hu65477166384441073.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-62&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;225&#34;
+		data-flex-basis=&#34;542px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Setelah itu scroll kebawah, dan akan terlihat flow nya&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-63.png&#34;
+	width=&#34;1530&#34;
+	height=&#34;687&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-63_hu14164853625908998643.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-63_hu12272963539856667080.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-63&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;222&#34;
+		data-flex-basis=&#34;534px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Dari flow tersebut, ketika berhasil menemukan nomor nya, maka secret phrase nya yaitu CTF{quantum_rulez}. Dan setelah itu ketika memasukan phrase untuk membuka flag nya, maka flag nya adalah CTF{quantum_is_the_future}.&lt;/p&gt;
+&lt;p&gt;Flag: CTF{quantum_is_the_future}&lt;/p&gt;
+&lt;h2 id=&#34;simple-check&#34;&gt;Simple Check
+&lt;/h2&gt;&lt;p&gt;Pada soal ini, hanya ada satu file, yaitu simple_check. Ketika saya coba jalankan, program akan meminta inputan password&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-64.png&#34;
+	width=&#34;452&#34;
+	height=&#34;136&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-64_hu15556146950617303058.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-64_hu13933280097562194326.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-64&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;332&#34;
+		data-flex-basis=&#34;797px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Karna chall ini ada ‘celah’ buat mendapatkan flag nya, jadi cukup menggunakan strings dan grep saja&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-65.png&#34;
+	width=&#34;438&#34;
+	height=&#34;63&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-65_hu9141495699331587608.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-65_hu14539530813935661247.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-65&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;695&#34;
+		data-flex-basis=&#34;1668px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Yups flag nya ada satu saja&lt;/p&gt;
+&lt;p&gt;flag: CTF{easy_password}&lt;/p&gt;
+&lt;h2 id=&#34;encrypted-flag&#34;&gt;Encrypted Flag
+&lt;/h2&gt;&lt;p&gt;Pada soal ini terdapat sebuah file encrypted_flag. Untuk mendapatkan flag nya sama seperti cara yang sebelumnya, yaitu mencoba menjalakan program nya terlebih dahulu&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-66.png&#34;
+	width=&#34;470&#34;
+	height=&#34;112&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-66_hu8299305268432135169.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-66_hu3466455173758288667.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-66&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;419&#34;
+		data-flex-basis=&#34;1007px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Karna program nya meminta password, jadi disini saya mencoba mencari flag dengan strings dan grep saja&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-67.png&#34;
+	width=&#34;442&#34;
+	height=&#34;111&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-67_hu13082973785411810218.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-67_hu13307221932133911967.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-67&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;398&#34;
+		data-flex-basis=&#34;955px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;CTF{StandByME!!!!}&lt;/p&gt;
+&lt;p&gt;Untuk memastikan nya, saya mencoba menjalankan lgi dan memasukan password tadi&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-68.png&#34;
+	width=&#34;436&#34;
+	height=&#34;140&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-68_hu12152270397901212203.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-68_hu5527914723644001501.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-68&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;311&#34;
+		data-flex-basis=&#34;747px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Yups hasilnya benar&lt;/p&gt;
+&lt;p&gt;flag: CTF{StandByME!!!!}&lt;/p&gt;
+&lt;h1 id=&#34;terima-kasih&#34;&gt;Terima kasih
+&lt;/h1&gt;&lt;p&gt;CTF Cyber Strike Competition 1.0&lt;/p&gt;
+&lt;p&gt;Meskipun masih banyak kekurangan dari beberapa soal yang diberikan nya, tapi masih ada beberapa soal lagi yang menarik dan menambah ilmu bagi saya sendiri.&lt;/p&gt;
+&lt;p&gt;Mungkin untuk soal kategori reverse tidak segampang itu untuk mendapatkan flag nya, akan tetapi soal-soal yang diberikan nya bagi saya menarik untuk bahan belajar revese engineering untuk mendapatkan flag nya sesungguh nya.&lt;/p&gt;
+&lt;p&gt;Sekali lagi, Terima kasih :D&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

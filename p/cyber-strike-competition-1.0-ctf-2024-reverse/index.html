@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Reverse Engineering Pada soal-soal reverse engineering ini, disini ada ‘celah’ pada setiap soal nya. Celah yang dimaksud yaitu untuk mendapatkan flag nya tanpa harus secara ‘reverse’, jadi cukup dengan melihat isi file nya, dan akan muncul flag nya tanpa harus di reverse engineering. Jadi setiap soal yang saya lakukan untuk mendapatkan flag nya menggunakan cara yang sama. Sayangnya pada writeup ini dibuat, saya tidak cukup waktu untuk melakukan screenshoot setiap soal-soalnya.">
+<title>[Cyber Strike Competition 1.0 CTF 2024] - Reverse</title>
+
+<link rel='canonical' href='https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="[Cyber Strike Competition 1.0 CTF 2024] - Reverse">
+<meta property='og:description' content="Reverse Engineering Pada soal-soal reverse engineering ini, disini ada ‘celah’ pada setiap soal nya. Celah yang dimaksud yaitu untuk mendapatkan flag nya tanpa harus secara ‘reverse’, jadi cukup dengan melihat isi file nya, dan akan muncul flag nya tanpa harus di reverse engineering. Jadi setiap soal yang saya lakukan untuk mendapatkan flag nya menggunakan cara yang sama. Sayangnya pada writeup ini dibuat, saya tidak cukup waktu untuk melakukan screenshoot setiap soal-soalnya.">
+<meta property='og:url' content='https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/'>
+<meta property='og:site_name' content='R3zp3ct0r'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-10-12T16:54:04&#43;07:00'/><meta property='article:modified_time' content='2024-10-12T16:54:04&#43;07:00'/><meta property='og:image' content='https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-63.png' />
+<meta name="twitter:title" content="[Cyber Strike Competition 1.0 CTF 2024] - Reverse">
+<meta name="twitter:description" content="Reverse Engineering Pada soal-soal reverse engineering ini, disini ada ‘celah’ pada setiap soal nya. Celah yang dimaksud yaitu untuk mendapatkan flag nya tanpa harus secara ‘reverse’, jadi cukup dengan melihat isi file nya, dan akan muncul flag nya tanpa harus di reverse engineering. Jadi setiap soal yang saya lakukan untuk mendapatkan flag nya menggunakan cara yang sama. Sayangnya pada writeup ini dibuat, saya tidak cukup waktu untuk melakukan screenshoot setiap soal-soalnya."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://example.com/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-63.png' />
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu14354783850851208185.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🌱</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">R3zp3ct0r</a></h1>
+            <h2 class="site-description">CTF Player &amp; Cybersecurity Enthusiast</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/mzrismuarf'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://x.com/mzrismuarf/'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/whoami/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>Whoami</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#mystery-dungeon">Mystery Dungeon</a></li>
+    <li><a href="#quantum">Quantum</a></li>
+    <li><a href="#simple-check">Simple Check</a></li>
+    <li><a href="#encrypted-flag">Encrypted Flag</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/cyber-strike-competition-1.0-ctf-2024-reverse/">
+                <img src="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-63_hu16335527108546554135.png"
+                        srcset="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-63_hu16335527108546554135.png 800w, /p/cyber-strike-competition-1.0-ctf-2024-reverse/image-63_hu356735397004597911.png 1600w"
+                        width="800" 
+                        height="359" 
+                        loading="lazy"
+                        alt="Featured image of post [Cyber Strike Competition 1.0 CTF 2024] - Reverse" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/reverse/" >
+                Reverse
+            </a>
+        
+            <a href="/categories/ctf-writeup/" >
+                CTF Writeup
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/cyber-strike-competition-1.0-ctf-2024-reverse/">[Cyber Strike Competition 1.0 CTF 2024] - Reverse</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 12, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p><img src="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-1.png"
+	width="2008"
+	height="1577"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-1_hu1485692534006786489.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-reverse/image-1_hu13918773768607908103.png 1024w"
+	loading="lazy"
+	
+		alt="Cyber Strike Competition 1.0"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="127"
+		data-flex-basis="305px"
+	
+></p>
+<p>Reverse Engineering</p>
+<p>Pada soal-soal reverse engineering ini, disini ada ‘celah’ pada setiap soal nya. Celah yang dimaksud yaitu untuk mendapatkan flag nya tanpa harus secara ‘reverse’, jadi cukup dengan melihat isi file nya, dan akan muncul flag nya tanpa harus di reverse engineering. Jadi setiap soal yang saya lakukan untuk mendapatkan flag nya menggunakan cara yang sama.</p>
+<p>Sayangnya pada writeup ini dibuat, saya tidak cukup waktu untuk melakukan screenshoot setiap soal-soalnya.</p>
+<h2 id="mystery-dungeon">Mystery Dungeon
+</h2><p>Oke langsung saya disini saya mengecek isi file nya dengan “cat mystery_dungeon”</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-54.png"
+	width="1438"
+	height="629"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-54_hu3224450468913858843.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-reverse/image-54_hu3090480793699175092.png 1024w"
+	loading="lazy"
+	
+		alt="image-54"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="228"
+		data-flex-basis="548px"
+	
+></p>
+<p>Dari hasil tersebut, sebenarnya sudah keliatan flag nya, tetapi disini saya pake strings dan grep agar lebih jelas flag nya</p>
+<p>strings mystery_dungeon | grep &ldquo;CTF{&rdquo;</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-55.png"
+	width="443"
+	height="78"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-55_hu13391834476369791497.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-reverse/image-55_hu17638568373882546811.png 1024w"
+	loading="lazy"
+	
+		alt="image-55"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="567"
+		data-flex-basis="1363px"
+	
+></p>
+<p>Dari hasil tersebut, terdapat 2 flag. Tetapi kemungkinan key untuk mendapatkan dari program tersebut yaitu “CTF{give_me_the_key}”. Tetapi untuk memastikan nya, saya coba jalankan program nya</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-56.png"
+	width="448"
+	height="132"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-56_hu13907477871960229128.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-reverse/image-56_hu9617469283554312943.png 1024w"
+	loading="lazy"
+	
+		alt="image-56"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="339"
+		data-flex-basis="814px"
+	
+></p>
+<p>Lalu masukan key nya CTF{give_me_the_key}</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-57.png"
+	width="555"
+	height="110"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-57_hu7635118348440139918.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-reverse/image-57_hu8211508484010815308.png 1024w"
+	loading="lazy"
+	
+		alt="image-57"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="504"
+		data-flex-basis="1210px"
+	
+></p>
+<p>Maka flag nya CTF{hidden_flag_here}</p>
+<p>flag: CTF{hidden_flag_here}</p>
+<h2 id="quantum">Quantum
+</h2><p>Pada soal ini, terdapat 2 file yaitu “key.txt” “quantum_crypt”</p>
+<p>isi key.txt</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-58.png"
+	width="405"
+	height="181"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-58_hu8108392251685045896.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-reverse/image-58_hu4508361829738196024.png 1024w"
+	loading="lazy"
+	
+		alt="image-58"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="223"
+		data-flex-basis="537px"
+	
+></p>
+<p>isi quantum_crypt</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-59.png"
+	width="1444"
+	height="726"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-59_hu3662203779009561527.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-reverse/image-59_hu502335356540203100.png 1024w"
+	loading="lazy"
+	
+		alt="image-59"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="477px"
+	
+></p>
+<p>Dari melihat isi file nya, terlihat isi flag nya. Akan tetapi disini saya coba cek lagi dengan strings dan grep</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-60.png"
+	width="449"
+	height="83"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-60_hu14226477396309756628.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-reverse/image-60_hu11263065474462360129.png 1024w"
+	loading="lazy"
+	
+		alt="image-60"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="540"
+		data-flex-basis="1298px"
+	
+></p>
+<p>CTF{quantum_rulez}</p>
+<p>CTF{quantum_is_the_future}</p>
+<p>Untuk memastikan nya, disini saya coba jalankan programnya</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-61.png"
+	width="501"
+	height="157"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-61_hu8876134993154675458.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-reverse/image-61_hu8921414902803850576.png 1024w"
+	loading="lazy"
+	
+		alt="image-61"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="319"
+		data-flex-basis="765px"
+	
+></p>
+<p>Karna tidak tau nomor berapa untuk membuka secret key nya, disini saya langsung coba melihat flow nya dengan ida64</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-62.png"
+	width="1920"
+	height="850"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-62_hu4549816155875766170.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-reverse/image-62_hu65477166384441073.png 1024w"
+	loading="lazy"
+	
+		alt="image-62"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="225"
+		data-flex-basis="542px"
+	
+></p>
+<p>Setelah itu scroll kebawah, dan akan terlihat flow nya</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-63.png"
+	width="1530"
+	height="687"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-63_hu14164853625908998643.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-reverse/image-63_hu12272963539856667080.png 1024w"
+	loading="lazy"
+	
+		alt="image-63"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="222"
+		data-flex-basis="534px"
+	
+></p>
+<p>Dari flow tersebut, ketika berhasil menemukan nomor nya, maka secret phrase nya yaitu CTF{quantum_rulez}. Dan setelah itu ketika memasukan phrase untuk membuka flag nya, maka flag nya adalah CTF{quantum_is_the_future}.</p>
+<p>Flag: CTF{quantum_is_the_future}</p>
+<h2 id="simple-check">Simple Check
+</h2><p>Pada soal ini, hanya ada satu file, yaitu simple_check. Ketika saya coba jalankan, program akan meminta inputan password</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-64.png"
+	width="452"
+	height="136"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-64_hu15556146950617303058.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-reverse/image-64_hu13933280097562194326.png 1024w"
+	loading="lazy"
+	
+		alt="image-64"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="332"
+		data-flex-basis="797px"
+	
+></p>
+<p>Karna chall ini ada ‘celah’ buat mendapatkan flag nya, jadi cukup menggunakan strings dan grep saja</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-65.png"
+	width="438"
+	height="63"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-65_hu9141495699331587608.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-reverse/image-65_hu14539530813935661247.png 1024w"
+	loading="lazy"
+	
+		alt="image-65"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="695"
+		data-flex-basis="1668px"
+	
+></p>
+<p>Yups flag nya ada satu saja</p>
+<p>flag: CTF{easy_password}</p>
+<h2 id="encrypted-flag">Encrypted Flag
+</h2><p>Pada soal ini terdapat sebuah file encrypted_flag. Untuk mendapatkan flag nya sama seperti cara yang sebelumnya, yaitu mencoba menjalakan program nya terlebih dahulu</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-66.png"
+	width="470"
+	height="112"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-66_hu8299305268432135169.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-reverse/image-66_hu3466455173758288667.png 1024w"
+	loading="lazy"
+	
+		alt="image-66"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="419"
+		data-flex-basis="1007px"
+	
+></p>
+<p>Karna program nya meminta password, jadi disini saya mencoba mencari flag dengan strings dan grep saja</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-67.png"
+	width="442"
+	height="111"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-67_hu13082973785411810218.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-reverse/image-67_hu13307221932133911967.png 1024w"
+	loading="lazy"
+	
+		alt="image-67"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="398"
+		data-flex-basis="955px"
+	
+></p>
+<p>CTF{StandByME!!!!}</p>
+<p>Untuk memastikan nya, saya mencoba menjalankan lgi dan memasukan password tadi</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-68.png"
+	width="436"
+	height="140"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-reverse/image-68_hu12152270397901212203.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-reverse/image-68_hu5527914723644001501.png 1024w"
+	loading="lazy"
+	
+		alt="image-68"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="311"
+		data-flex-basis="747px"
+	
+></p>
+<p>Yups hasilnya benar</p>
+<p>flag: CTF{StandByME!!!!}</p>
+<h1 id="terima-kasih">Terima kasih
+</h1><p>CTF Cyber Strike Competition 1.0</p>
+<p>Meskipun masih banyak kekurangan dari beberapa soal yang diberikan nya, tapi masih ada beberapa soal lagi yang menarik dan menambah ilmu bagi saya sendiri.</p>
+<p>Mungkin untuk soal kategori reverse tidak segampang itu untuk mendapatkan flag nya, akan tetapi soal-soal yang diberikan nya bagi saya menarik untuk bahan belajar revese engineering untuk mendapatkan flag nya sesungguh nya.</p>
+<p>Sekali lagi, Terima kasih :D</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/tsa-cyber-champion-2024-pwn/">
+        
+        
+            <div class="article-image">
+                <img src="/p/tsa-cyber-champion-2024-pwn/image-37.e8909ff5b3af5fca0c6f4265db653cba_hu16570704171071112943.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [TSA Cyber Champion 2024] - Pwn"
+                        
+                        data-hash="md5-6JCf9bOvX8oMb0Jl22U8ug==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[TSA Cyber Champion 2024] - Pwn</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/tsa-cyber-champion-2024-reverse-engineering-101-writeup/">
+        
+        
+            <div class="article-image">
+                <img src="/p/tsa-cyber-champion-2024-reverse-engineering-101-writeup/image-31.b058d96ce09d983ef0303b5d54afa3db_hu13999229812891611926.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [TSA Cyber Champion 2024] - Reverse Engineering 101 Writeup"
+                        
+                        data-hash="md5-sFjZbOCdmD7wMDtdVK&#43;j2w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[TSA Cyber Champion 2024] - Reverse Engineering 101 Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/tsa-cyber-champion-2024-web-exploit-101-writeup/">
+        
+        
+            <div class="article-image">
+                <img src="/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-8.14a834fee710e687d2ab557dbc403cb2_hu6409970780078693723.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [TSA Cyber Champion 2024] - Web Exploit 101 Writeup"
+                        
+                        data-hash="md5-FKg0/ucQ5ofSq1V9vEA8sg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[TSA Cyber Champion 2024] - Web Exploit 101 Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/tsa-cyber-champion-2024-cryptography-101-writeup/">
+        
+        
+            <div class="article-image">
+                <img src="/p/tsa-cyber-champion-2024-cryptography-101-writeup/image-50.81ed374df55300552556316585548fc0_hu3847145830663123047.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [TSA Cyber Champion 2024] Cryptography 101 Writeup"
+                        
+                        data-hash="md5-ge03TfVTAFUlVjFlhVSPwA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[TSA Cyber Champion 2024] Cryptography 101 Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/cyber-strike-competition-1.0-ctf-2024-crypto/">
+        
+        
+            <div class="article-image">
+                <img src="/p/cyber-strike-competition-1.0-ctf-2024-crypto/image-39.2726ee7e4a0f501f75c1fd75ff60b3b0_hu5483847418366584844.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [Cyber Strike Competition 1.0 CTF 2024] - Crypto"
+                        
+                        data-hash="md5-JybufkoPUB91wf11/2CzsA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Cyber Strike Competition 1.0 CTF 2024] - Crypto</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 R3zp3ct0r
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Tags on R3zp3ct0r</title>
+        <link>https://example.com/tags/</link>
+        <description>Recent content in Tags on R3zp3ct0r</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>R3zp3ct0r</copyright>
+        <lastBuildDate>Sun, 10 Nov 2024 19:00:07 +0700</lastBuildDate><atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>BLS Signature</title>
+        <link>https://example.com/tags/bls-signature/</link>
+        <pubDate>Sun, 10 Nov 2024 19:00:07 +0700</pubDate>
+        
+        <guid>https://example.com/tags/bls-signature/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Buffer Overflow</title>
+        <link>https://example.com/tags/buffer-overflow/</link>
+        <pubDate>Sun, 10 Nov 2024 19:00:07 +0700</pubDate>
+        
+        <guid>https://example.com/tags/buffer-overflow/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Command Injection</title>
+        <link>https://example.com/tags/command-injection/</link>
+        <pubDate>Sun, 10 Nov 2024 19:00:07 +0700</pubDate>
+        
+        <guid>https://example.com/tags/command-injection/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Cryptography</title>
+        <link>https://example.com/tags/cryptography/</link>
+        <pubDate>Sun, 10 Nov 2024 19:00:07 +0700</pubDate>
+        
+        <guid>https://example.com/tags/cryptography/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>CTF</title>
+        <link>https://example.com/tags/ctf/</link>
+        <pubDate>Sun, 10 Nov 2024 19:00:07 +0700</pubDate>
+        
+        <guid>https://example.com/tags/ctf/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>File Upload</title>
+        <link>https://example.com/tags/file-upload/</link>
+        <pubDate>Sun, 10 Nov 2024 19:00:07 +0700</pubDate>
+        
+        <guid>https://example.com/tags/file-upload/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Ghidra</title>
+        <link>https://example.com/tags/ghidra/</link>
+        <pubDate>Sun, 10 Nov 2024 19:00:07 +0700</pubDate>
+        
+        <guid>https://example.com/tags/ghidra/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>LFI</title>
+        <link>https://example.com/tags/lfi/</link>
+        <pubDate>Sun, 10 Nov 2024 19:00:07 +0700</pubDate>
+        
+        <guid>https://example.com/tags/lfi/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>PWN</title>
+        <link>https://example.com/tags/pwn/</link>
+        <pubDate>Sun, 10 Nov 2024 19:00:07 +0700</pubDate>
+        
+        <guid>https://example.com/tags/pwn/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>RCE</title>
+        <link>https://example.com/tags/rce/</link>
+        <pubDate>Sun, 10 Nov 2024 19:00:07 +0700</pubDate>
+        
+        <guid>https://example.com/tags/rce/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Reverse Engineering</title>
+        <link>https://example.com/tags/reverse-engineering/</link>
+        <pubDate>Sun, 10 Nov 2024 19:00:07 +0700</pubDate>
+        
+        <guid>https://example.com/tags/reverse-engineering/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>ROP</title>
+        <link>https://example.com/tags/rop/</link>
+        <pubDate>Sun, 10 Nov 2024 19:00:07 +0700</pubDate>
+        
+        <guid>https://example.com/tags/rop/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>RSA</title>
+        <link>https://example.com/tags/rsa/</link>
+        <pubDate>Sun, 10 Nov 2024 19:00:07 +0700</pubDate>
+        
+        <guid>https://example.com/tags/rsa/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Web Exploit</title>
+        <link>https://example.com/tags/web-exploit/</link>
+        <pubDate>Sun, 10 Nov 2024 19:00:07 +0700</pubDate>
+        
+        <guid>https://example.com/tags/web-exploit/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>XOR</title>
+        <link>https://example.com/tags/xor/</link>
+        <pubDate>Sun, 10 Nov 2024 19:00:07 +0700</pubDate>
+        
+        <guid>https://example.com/tags/xor/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Painless RSA</title>
+        <link>https://example.com/tags/painless-rsa/</link>
+        <pubDate>Sun, 18 Aug 2024 23:19:20 +0700</pubDate>
+        
+        <guid>https://example.com/tags/painless-rsa/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Collision Attack</title>
+        <link>https://example.com/tags/collision-attack/</link>
+        <pubDate>Sat, 10 Aug 2024 15:42:50 +0700</pubDate>
+        
+        <guid>https://example.com/tags/collision-attack/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>HORTEX</title>
+        <link>https://example.com/tags/hortex/</link>
+        <pubDate>Sat, 10 Aug 2024 15:42:50 +0700</pubDate>
+        
+        <guid>https://example.com/tags/hortex/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

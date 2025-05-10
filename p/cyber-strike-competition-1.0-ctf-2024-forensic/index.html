@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Writeup Forensic CTF Log yang Tersembunyi Deskripsi Soal Pada soal ini, saya diberikan sebuah file zip yang berisi sebuah petunjuk tersembunyi. Analisis dan Pemecahan Masalah Untuk menyelesaikan soal ini, langkah pertama yang saya lakukan adalah mengekstrak file zip tersebut dan menyimpannya ke dalam folder &ldquo;forensic&rdquo;. Setelah diekstrak, ternyata hanya ada satu file, yaitu &ldquo;important.txt&rdquo;. Namun, setelah saya periksa, isi dari file &ldquo;important.txt&rdquo; tidak memberikan informasi apapun. Karena tidak ada file lain, saya mencoba melakukan pengecekan pada file zip itu sendiri menggunakan &ldquo;xxd&rdquo;.">
+<title>[Cyber Strike Competition 1.0 CTF 2024] - Forensic</title>
+
+<link rel='canonical' href='https://example.com/p/cyber-strike-competition-1.0-ctf-2024-forensic/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="[Cyber Strike Competition 1.0 CTF 2024] - Forensic">
+<meta property='og:description' content="Writeup Forensic CTF Log yang Tersembunyi Deskripsi Soal Pada soal ini, saya diberikan sebuah file zip yang berisi sebuah petunjuk tersembunyi. Analisis dan Pemecahan Masalah Untuk menyelesaikan soal ini, langkah pertama yang saya lakukan adalah mengekstrak file zip tersebut dan menyimpannya ke dalam folder &ldquo;forensic&rdquo;. Setelah diekstrak, ternyata hanya ada satu file, yaitu &ldquo;important.txt&rdquo;. Namun, setelah saya periksa, isi dari file &ldquo;important.txt&rdquo; tidak memberikan informasi apapun. Karena tidak ada file lain, saya mencoba melakukan pengecekan pada file zip itu sendiri menggunakan &ldquo;xxd&rdquo;.">
+<meta property='og:url' content='https://example.com/p/cyber-strike-competition-1.0-ctf-2024-forensic/'>
+<meta property='og:site_name' content='R3zp3ct0r'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-10-12T16:54:04&#43;07:00'/><meta property='article:modified_time' content='2024-10-12T16:54:04&#43;07:00'/><meta property='og:image' content='https://example.com/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-21.png' />
+<meta name="twitter:title" content="[Cyber Strike Competition 1.0 CTF 2024] - Forensic">
+<meta name="twitter:description" content="Writeup Forensic CTF Log yang Tersembunyi Deskripsi Soal Pada soal ini, saya diberikan sebuah file zip yang berisi sebuah petunjuk tersembunyi. Analisis dan Pemecahan Masalah Untuk menyelesaikan soal ini, langkah pertama yang saya lakukan adalah mengekstrak file zip tersebut dan menyimpannya ke dalam folder &ldquo;forensic&rdquo;. Setelah diekstrak, ternyata hanya ada satu file, yaitu &ldquo;important.txt&rdquo;. Namun, setelah saya periksa, isi dari file &ldquo;important.txt&rdquo; tidak memberikan informasi apapun. Karena tidak ada file lain, saya mencoba melakukan pengecekan pada file zip itu sendiri menggunakan &ldquo;xxd&rdquo;."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://example.com/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-21.png' />
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu14354783850851208185.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🌱</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">R3zp3ct0r</a></h1>
+            <h2 class="site-description">CTF Player &amp; Cybersecurity Enthusiast</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/mzrismuarf'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://x.com/mzrismuarf/'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/whoami/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>Whoami</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#log-yang-tersembunyi">Log yang Tersembunyi</a>
+      <ol>
+        <li><a href="#deskripsi-soal">Deskripsi Soal</a></li>
+        <li><a href="#analisis-dan-pemecahan-masalah">Analisis dan Pemecahan Masalah</a></li>
+        <li><a href="#solusi">Solusi</a></li>
+      </ol>
+    </li>
+    <li><a href="#mystery-in-the-files">Mystery in the Files</a>
+      <ol>
+        <li><a href="#deskripsi-soal-1">Deskripsi Soal</a></li>
+        <li><a href="#analisis-dan-pemecahan-masalah-1">Analisis dan Pemecahan Masalah</a></li>
+        <li><a href="#solusi-1">Solusi</a></li>
+      </ol>
+    </li>
+    <li><a href="#labirin-data-terlupakan">Labirin Data Terlupakan</a>
+      <ol>
+        <li><a href="#deskripsi-soal-2">Deskripsi Soal</a></li>
+        <li><a href="#analisis-dan-pemecahan-masalah-2">Analisis dan Pemecahan Masalah</a></li>
+        <li><a href="#solusi-2">Solusi</a></li>
+      </ol>
+    </li>
+    <li><a href="#tersembunyi">Tersembunyi</a>
+      <ol>
+        <li><a href="#deskripsi-soal-3">Deskripsi Soal</a></li>
+        <li><a href="#analisis-dan-pemecahan-masalah-3">Analisis dan Pemecahan Masalah</a></li>
+        <li><a href="#solusi-3">Solusi</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/cyber-strike-competition-1.0-ctf-2024-forensic/">
+                <img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-21_hu12149572742714278912.png"
+                        srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-21_hu12149572742714278912.png 800w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-21_hu12406392950438870316.png 1600w"
+                        width="800" 
+                        height="193" 
+                        loading="lazy"
+                        alt="Featured image of post [Cyber Strike Competition 1.0 CTF 2024] - Forensic" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/forensic/" >
+                Forensic
+            </a>
+        
+            <a href="/categories/ctf-writeup/" >
+                CTF Writeup
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/cyber-strike-competition-1.0-ctf-2024-forensic/">[Cyber Strike Competition 1.0 CTF 2024] - Forensic</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 12, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    3 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="writeup-forensic-ctf">Writeup Forensic CTF
+</h1><p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-1.png"
+	width="2008"
+	height="1577"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-1_hu1485692534006786489.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-1_hu13918773768607908103.png 1024w"
+	loading="lazy"
+	
+		alt="Cyber Strike Competition 1.0"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="127"
+		data-flex-basis="305px"
+	
+></p>
+<h2 id="log-yang-tersembunyi">Log yang Tersembunyi
+</h2><h3 id="deskripsi-soal">Deskripsi Soal
+</h3><p>Pada soal ini, saya diberikan sebuah file zip yang berisi sebuah petunjuk tersembunyi.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-4.png"
+	width="499"
+	height="495"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-4_hu2008569252534958231.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-4_hu15220986177812556912.png 1024w"
+	loading="lazy"
+	
+		alt="Soal Log yang Tersembunyi"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="241px"
+	
+></p>
+<h3 id="analisis-dan-pemecahan-masalah">Analisis dan Pemecahan Masalah
+</h3><p>Untuk menyelesaikan soal ini, langkah pertama yang saya lakukan adalah mengekstrak file zip tersebut dan menyimpannya ke dalam folder &ldquo;forensic&rdquo;.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-5.png"
+	width="697"
+	height="156"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-5_hu17069904901951419567.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-5_hu11937171382972972348.png 1024w"
+	loading="lazy"
+	
+		alt="Ekstraksi File Zip"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="446"
+		data-flex-basis="1072px"
+	
+></p>
+<p>Setelah diekstrak, ternyata hanya ada satu file, yaitu &ldquo;important.txt&rdquo;.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-6.png"
+	width="608"
+	height="116"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-6_hu17078901305149127403.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-6_hu2392992475927524186.png 1024w"
+	loading="lazy"
+	
+		alt="File important.txt"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="524"
+		data-flex-basis="1257px"
+	
+></p>
+<p>Namun, setelah saya periksa, isi dari file &ldquo;important.txt&rdquo; tidak memberikan informasi apapun. Karena tidak ada file lain, saya mencoba melakukan pengecekan pada file zip itu sendiri menggunakan &ldquo;xxd&rdquo;.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-7.png"
+	width="592"
+	height="462"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-7_hu10396797992249403666.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-7_hu14659969751578380995.png 1024w"
+	loading="lazy"
+	
+		alt="Pengecekan File Zip dengan xxd"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="307px"
+	
+></p>
+<p>Ternyata, di dalam file zip tersebut terdapat sebuah flag!</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-8.png"
+	width="578"
+	height="200"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-8_hu11316738001359435650.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-8_hu10271382369013999421.png 1024w"
+	loading="lazy"
+	
+		alt="Flag pada File Zip"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="289"
+		data-flex-basis="693px"
+	
+></p>
+<h3 id="solusi">Solusi
+</h3><p><strong>Flag:</strong> <code>CTF{askdjaskjd123280912}</code></p>
+<h2 id="mystery-in-the-files">Mystery in the Files
+</h2><h3 id="deskripsi-soal-1">Deskripsi Soal
+</h3><p>Pada soal ini, saya diberikan sebuah file <code>barangbukti.zip</code> yang berisi banyak subfolder dan file teks sesuai dengan deskripsi soal.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-9.png"
+	width="508"
+	height="633"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-9_hu15366199643015071670.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-9_hu11533794884165182114.png 1024w"
+	loading="lazy"
+	
+		alt="Soal Mystery in the Files"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="80"
+		data-flex-basis="192px"
+	
+></p>
+<h3 id="analisis-dan-pemecahan-masalah-1">Analisis dan Pemecahan Masalah
+</h3><p>Setelah mengekstrak file <code>barangbukti.zip</code>, saya menemukan banyak subfolder dan file teks.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-10.png"
+	width="806"
+	height="874"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-10_hu17332001704762863453.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-10_hu10458765906749509499.png 1024w"
+	loading="lazy"
+	
+		alt="Isi File barangbukti.zip"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="92"
+		data-flex-basis="221px"
+	
+></p>
+<p>Jika saya periksa satu per satu, tentu akan memakan waktu. Oleh karena itu, saya memutuskan untuk mencari kata &ldquo;CTF&rdquo; pada setiap file txt dengan bantuan &ldquo;grep&rdquo;.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-12.png"
+	width="748"
+	height="63"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-12_hu11974659328723676666.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-12_hu251180995339276725.png 1024w"
+	loading="lazy"
+	
+		alt="Pencarian Kata CTF dengan grep"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1187"
+		data-flex-basis="2849px"
+	
+></p>
+<p>Namun, hasilnya nihil. Tidak ada kata &ldquo;CTF{&rdquo; yang ditemukan.</p>
+<p>Kemudian, saya mencoba mencari dengan kata &ldquo;FLAG&rdquo;.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-13.png"
+	width="1027"
+	height="190"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-13_hu3880921304480218454.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-13_hu12845698488718020696.png 1024w"
+	loading="lazy"
+	
+		alt="Pencarian Kata FLAG dengan grep"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="540"
+		data-flex-basis="1297px"
+	
+></p>
+<p>Hasilnya, saya menemukan sebuah flag, yaitu &ldquo;FLAG{Forensic_Expert_123}&rdquo;. Karena format flag yang diminta adalah CTF{}, maka flag yang benar adalah CTF{Forensic_Expert_123}.</p>
+<h3 id="solusi-1">Solusi
+</h3><p><strong>Flag:</strong> <code>CTF{Forensic_Expert_123}</code></p>
+<h2 id="labirin-data-terlupakan">Labirin Data Terlupakan
+</h2><h3 id="deskripsi-soal-2">Deskripsi Soal
+</h3><p>Pada soal ini, saya diberikan sebuah file zip yang berisi banyak subfolder dan file txt di setiap subfoldernya.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-14.png"
+	width="505"
+	height="635"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-14_hu13003225615761070145.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-14_hu7954351091834956168.png 1024w"
+	loading="lazy"
+	
+		alt="Soal Labirin Data Terlupakan"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="79"
+		data-flex-basis="190px"
+	
+></p>
+<h3 id="analisis-dan-pemecahan-masalah-2">Analisis dan Pemecahan Masalah
+</h3><p>Setelah mengekstrak file zip tersebut, saya menemukan struktur folder yang kompleks.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-15.png"
+	width="936"
+	height="574"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-15_hu4622064951216446116.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-15_hu1338317280598554466.png 1024w"
+	loading="lazy"
+	
+		alt="Isi File Zip"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="163"
+		data-flex-basis="391px"
+	
+></p>
+<p>Saya mencoba mencari kata &ldquo;flag&rdquo; dan &ldquo;CTF{&rdquo; dengan grep, tetapi hasilnya tetap tidak ditemukan.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-16.png"
+	width="607"
+	height="229"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-16_hu3401806703841123336.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-16_hu4962504812473944807.png 1024w"
+	loading="lazy"
+	
+		alt="Pencarian Kata dengan grep"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="265"
+		data-flex-basis="636px"
+	
+></p>
+<p>Kemudian, saya mencoba mengikuti steg-check dari <a class="link" href="https://book.hacktricks.xyz/crypto-and-stego/stego-tricks"  target="_blank" rel="noopener"
+    >https://book.hacktricks.xyz/crypto-and-stego/stego-tricks</a>, terutama fokus pada penggunaan foremost.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-17.png"
+	width="815"
+	height="219"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-17_hu11111211788372031975.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-17_hu4646566175405428990.png 1024w"
+	loading="lazy"
+	
+		alt="Steg Check"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="372"
+		data-flex-basis="893px"
+	
+></p>
+<p>Saya langsung mencoba menggunakan foremost.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-18.png"
+	width="664"
+	height="944"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-18_hu11886101260678977047.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-18_hu12324150002488874215.png 1024w"
+	loading="lazy"
+	
+		alt="Penggunaan Foremost"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="70"
+		data-flex-basis="168px"
+	
+></p>
+<p>Pada tampilan hasil foremost, tidak ada informasi yang menarik. Namun, saya menemukan adanya folder output.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-19.png"
+	width="611"
+	height="210"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-19_hu1592228404062016290.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-19_hu3140655663419282716.png 1024w"
+	loading="lazy"
+	
+		alt="Folder Output Foremost"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="290"
+		data-flex-basis="698px"
+	
+></p>
+<p>Di dalam folder output, ternyata ada folder &ldquo;jpg&rdquo;. Ini menandakan bahwa di dalam zip tadi terdapat file jpg. Berikut adalah isi dari file <code>audit.txt</code> yang dihasilkan oleh foremost.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-20.png"
+	width="699"
+	height="502"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-20_hu9989120667162015103.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-20_hu15163845911110047311.png 1024w"
+	loading="lazy"
+	
+		alt="Isi File audit.txt"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="139"
+		data-flex-basis="334px"
+	
+></p>
+<p>Setelah itu, saya langsung mengecek file jpg tersebut.</p>
+<p>Jika dibuka, gambar jpg tersebut hanya menampilkan gambar doraemon.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-21.png"
+	width="782"
+	height="189"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-21_hu2980724478337595652.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-21_hu4775923458585405234.png 1024w"
+	loading="lazy"
+	
+		alt="Gambar Doraemon"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="413"
+		data-flex-basis="993px"
+	
+></p>
+<p>Kemudian, saya mulai mencoba melakukan stegano check, seperti menggunakan <code>file</code>, <code>exiftool</code>, dan <code>strings</code>.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-22.png"
+	width="1219"
+	height="1003"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-22_hu1047564189654157839.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-22_hu14585499729235512671.png 1024w"
+	loading="lazy"
+	
+		alt="Stegano Check"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="121"
+		data-flex-basis="291px"
+	
+></p>
+<p>Pada bagian awal string, saya menemukan pola seperti ini:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">*456789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz
+</span></span><span class="line"><span class="cl">*56789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Saya menduga ini adalah bagian key yang mungkin berguna untuk langkah selanjutnya.</p>
+<p>Karena dari percobaan tadi tidak ada informasi yang menarik, saya mencoba menggunakan steghide.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-23.png"
+	width="670"
+	height="135"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-23_hu4757833809718034685.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-23_hu6940365329583718422.png 1024w"
+	loading="lazy"
+	
+		alt="Penggunaan Steghide"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="496"
+		data-flex-basis="1191px"
+	
+></p>
+<p>Namun, ternyata steghide meminta password.</p>
+<p>Saya mencoba menggunakan key yang saya temukan sebelumnya, tetapi tidak berhasil.</p>
+<p>Oleh karena itu, saya perlu mencari password untuk membuka isi dari gambar tersebut. Untuk mencari password/passphrase, saya menggunakan tools StegCracker (<a class="link" href="https://github.com/Paradoxis/StegCracker"  target="_blank" rel="noopener"
+    >https://github.com/Paradoxis/StegCracker</a>) untuk melakukan <em>brute force</em> passphrase.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-24.png"
+	width="1367"
+	height="379"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-24_hu7893262009882385017.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-24_hu10175970250321412823.png 1024w"
+	loading="lazy"
+	
+		alt="Penggunaan StegCracker"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="360"
+		data-flex-basis="865px"
+	
+></p>
+<p>Secara otomatis, StegCracker akan menggunakan wordlist dari <code>rockyou.txt</code> yang tersimpan di PC. Saya langsung menjalankan StegCracker.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-25.png"
+	width="662"
+	height="414"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-25_hu9925937356075503111.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-25_hu3545693501948364922.png 1024w"
+	loading="lazy"
+	
+		alt="Menjalankan StegCracker"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="159"
+		data-flex-basis="383px"
+	
+></p>
+<p>Setelah beberapa saat, saya berhasil menemukan password untuk gambar tersebut, yaitu &ldquo;password123&rdquo;. Sekarang, saya mencoba lagi steghide dengan password/passphrase &ldquo;password123&rdquo;.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-26.png"
+	width="652"
+	height="147"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-26_hu14803164854689231195.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-26_hu15234990313983553521.png 1024w"
+	loading="lazy"
+	
+		alt="Penggunaan Steghide dengan Password"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="443"
+		data-flex-basis="1064px"
+	
+></p>
+<p>Ternyata, di dalam gambar tersebut masih ada file txt lagi. Sekarang, saya akan mengecek file txt tersebut.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-27.png"
+	width="635"
+	height="145"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-27_hu10826070706670060626.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-27_hu5177439011845817531.png 1024w"
+	loading="lazy"
+	
+		alt="Isi File txt"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="437"
+		data-flex-basis="1051px"
+	
+></p>
+<p>Akhirnya, saya menemukan flag-nya!</p>
+<h3 id="solusi-2">Solusi
+</h3><p><strong>Flag:</strong> <code>CTF{labirin_disini}</code></p>
+<h2 id="tersembunyi">Tersembunyi
+</h2><h3 id="deskripsi-soal-3">Deskripsi Soal
+</h3><p>Pada soal kali ini, saya ditugaskan untuk mencari flag di dalam file zip.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-28.png"
+	width="496"
+	height="606"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-28_hu3163014468632563128.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-28_hu15598380245576584309.png 1024w"
+	loading="lazy"
+	
+		alt="Soal Tersembunyi"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="81"
+		data-flex-basis="196px"
+	
+></p>
+<h3 id="analisis-dan-pemecahan-masalah-3">Analisis dan Pemecahan Masalah
+</h3><p>Saya langsung mengekstrak file zip tersebut.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-29.png"
+	width="717"
+	height="129"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-29_hu14234613273417280502.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-29_hu3091536702904910562.png 1024w"
+	loading="lazy"
+	
+		alt="Ekstraksi File Zip"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="555"
+		data-flex-basis="1333px"
+	
+></p>
+<p>Dari hasil ekstraksi, terdapat dua file txt. Berikut adalah isi dari masing-masing file txt.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-30.png"
+	width="559"
+	height="310"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-30_hu9558150289440072959.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-30_hu4875478515886957376.png 1024w"
+	loading="lazy"
+	
+		alt="Isi File txt"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="180"
+		data-flex-basis="432px"
+	
+></p>
+<p>Ada sesuatu yang menarik pada file <code>secret_message.txt</code>.</p>
+<p>Pada bagian &ldquo;pesan penting&rdquo;, terdapat kode biner. Saya mencoba mendekode kode biner ini menggunakan web <a class="link" href="https://cryptii.com/pipes/binary-decoder"  target="_blank" rel="noopener"
+    >https://cryptii.com/pipes/binary-decoder</a>, tetapi hasilnya tidak bisa didekode.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-31.png"
+	width="1662"
+	height="599"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-31_hu2504349812894016994.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-31_hu10699934421699714273.png 1024w"
+	loading="lazy"
+	
+		alt="Dekode Kode Biner dengan cryptii"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="277"
+		data-flex-basis="665px"
+	
+></p>
+<p>Kemudian, saya menggunakan web favorit saya, yaitu CyberChef, untuk menggunakan fitur &ldquo;Magic&rdquo; yang secara otomatis dapat mendeteksi encoding yang digunakan.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-32.png"
+	width="997"
+	height="607"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-32_hu6711848917117782822.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-32_hu6054461433280243614.png 1024w"
+	loading="lazy"
+	
+		alt="Penggunaan CyberChef"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="164"
+		data-flex-basis="394px"
+	
+></p>
+<p>Hasilnya, encoding yang digunakan adalah &ldquo;UNIX Timestamp&rdquo;, dan hasilnya berupa tanggal:</p>
+<p><code>Mon 14 January 2002 12:08:21.100 UTC</code></p>
+<p>Selanjutnya, saya mencoba mendekode bagian &ldquo;Flag terenkripsi: Q1RGezEyM1NyeXB0b30=&rdquo;. Saya masih menggunakan CyberChef.</p>
+<p><img src="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-33.png"
+	width="960"
+	height="633"
+	srcset="/p/cyber-strike-competition-1.0-ctf-2024-forensic/image-33_hu9705362440632783859.png 480w, /p/cyber-strike-competition-1.0-ctf-2024-forensic/image-33_hu9553230083465795378.png 1024w"
+	loading="lazy"
+	
+		alt="Dekode Flag dengan CyberChef"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="151"
+		data-flex-basis="363px"
+	
+></p>
+<p>Hasilnya menampilkan flag!</p>
+<h3 id="solusi-3">Solusi
+</h3><p><strong>Flag:</strong> <code>CTF{123Srypto}</code></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/tsa-cyber-champion-2024-pwn/">
+        
+        
+            <div class="article-image">
+                <img src="/p/tsa-cyber-champion-2024-pwn/image-37.e8909ff5b3af5fca0c6f4265db653cba_hu16570704171071112943.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [TSA Cyber Champion 2024] - Pwn"
+                        
+                        data-hash="md5-6JCf9bOvX8oMb0Jl22U8ug==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[TSA Cyber Champion 2024] - Pwn</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/tsa-cyber-champion-2024-reverse-engineering-101-writeup/">
+        
+        
+            <div class="article-image">
+                <img src="/p/tsa-cyber-champion-2024-reverse-engineering-101-writeup/image-31.b058d96ce09d983ef0303b5d54afa3db_hu13999229812891611926.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [TSA Cyber Champion 2024] - Reverse Engineering 101 Writeup"
+                        
+                        data-hash="md5-sFjZbOCdmD7wMDtdVK&#43;j2w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[TSA Cyber Champion 2024] - Reverse Engineering 101 Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/tsa-cyber-champion-2024-web-exploit-101-writeup/">
+        
+        
+            <div class="article-image">
+                <img src="/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-8.14a834fee710e687d2ab557dbc403cb2_hu6409970780078693723.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [TSA Cyber Champion 2024] - Web Exploit 101 Writeup"
+                        
+                        data-hash="md5-FKg0/ucQ5ofSq1V9vEA8sg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[TSA Cyber Champion 2024] - Web Exploit 101 Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/tsa-cyber-champion-2024-cryptography-101-writeup/">
+        
+        
+            <div class="article-image">
+                <img src="/p/tsa-cyber-champion-2024-cryptography-101-writeup/image-50.81ed374df55300552556316585548fc0_hu3847145830663123047.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [TSA Cyber Champion 2024] Cryptography 101 Writeup"
+                        
+                        data-hash="md5-ge03TfVTAFUlVjFlhVSPwA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[TSA Cyber Champion 2024] Cryptography 101 Writeup</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/cyber-strike-competition-1.0-ctf-2024-crypto/">
+        
+        
+            <div class="article-image">
+                <img src="/p/cyber-strike-competition-1.0-ctf-2024-crypto/image-39.2726ee7e4a0f501f75c1fd75ff60b3b0_hu5483847418366584844.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [Cyber Strike Competition 1.0 CTF 2024] - Crypto"
+                        
+                        data-hash="md5-JybufkoPUB91wf11/2CzsA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Cyber Strike Competition 1.0 CTF 2024] - Crypto</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 R3zp3ct0r
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

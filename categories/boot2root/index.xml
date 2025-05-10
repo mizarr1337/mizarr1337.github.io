@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Boot2Root on R3zp3ct0r</title>
+        <link>https://example.com/categories/boot2root/</link>
+        <description>Recent content in Boot2Root on R3zp3ct0r</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>R3zp3ct0r</copyright>
+        <lastBuildDate>Sun, 18 Aug 2024 23:19:20 +0700</lastBuildDate><atom:link href="https://example.com/categories/boot2root/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>[ZeroByte CTF 2024] Writeup</title>
+        <link>https://example.com/p/zerobyte-ctf-2024-writeup/</link>
+        <pubDate>Sun, 18 Aug 2024 23:19:20 +0700</pubDate>
+        
+        <guid>https://example.com/p/zerobyte-ctf-2024-writeup/</guid>
+        <description>&lt;img src="https://example.com/p/zerobyte-ctf-2024-writeup/image-1.png" alt="Featured image of post [ZeroByte CTF 2024] Writeup" /&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-1.png&#34;
+	width=&#34;554&#34;
+	height=&#34;619&#34;
+	srcset=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-1_hu9001849322713191907.png 480w, https://example.com/p/zerobyte-ctf-2024-writeup/image-1_hu15746070578338632054.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ZerobyteCTF 2024&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;89&#34;
+		data-flex-basis=&#34;214px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;misc&#34;&gt;Misc
+&lt;/h2&gt;&lt;h3 id=&#34;-free-flag-4-all-&#34;&gt;[ Free Flag 4 All ]
+&lt;/h3&gt;&lt;p&gt;Soal pertama yang saya kerjakan yaitu soal yg ‘free flag’, karna lumayan buat point petama hehe&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-2.png&#34;
+	width=&#34;501&#34;
+	height=&#34;528&#34;
+	srcset=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-2_hu17601603218116772948.png 480w, https://example.com/p/zerobyte-ctf-2024-writeup/image-2_hu6703122179452866516.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;94&#34;
+		data-flex-basis=&#34;227px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Di dalam deskripsi soal sudah terlihat flag nya.&lt;/p&gt;
+&lt;p&gt;flag: 0byteCTF{79_t4hun m3rd3k4_INDONESIA_m4kin_b3rk4ry4}&lt;/p&gt;
+&lt;h2 id=&#34;crypto&#34;&gt;Crypto
+&lt;/h2&gt;&lt;h3 id=&#34;-painless-rsa-&#34;&gt;[ Painless RSA ]
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-3.png&#34;
+	width=&#34;495&#34;
+	height=&#34;544&#34;
+	srcset=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-3_hu2879279695837852021.png 480w, https://example.com/p/zerobyte-ctf-2024-writeup/image-3_hu11133547976018498344.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;90&#34;
+		data-flex-basis=&#34;218px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;executive-summary&#34;&gt;Executive Summary
+&lt;/h4&gt;&lt;p&gt;Di soal ini, terdapat sebuah netcat untuk terhubung ke koneksi soal nya.Ketika saya mencoba menghubungkan nya dengan perintah ‘nc 152.42.176.161 300041’, maka hasilnya seperti berikut:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-4.png&#34;
+	width=&#34;489&#34;
+	height=&#34;369&#34;
+	srcset=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-4_hu2467215765985439781.png 480w, https://example.com/p/zerobyte-ctf-2024-writeup/image-4_hu15092214362922093613.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;132&#34;
+		data-flex-basis=&#34;318px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Dari hasil tersebut, sesuai judul soal nya yaitu soal kriptografi dengan “RSA”. Di RSA ini, biasanya terdapat sebuah parameter utama yaitu modulus “n” dan exponen publik “e”. Parameter tersebut gunanya untuk mengenkripsi data.&lt;/p&gt;
+&lt;h4 id=&#34;technical-report&#34;&gt;Technical Report
+&lt;/h4&gt;&lt;p&gt;Dilihat hasil dari gambar tadi, ada beberapa ciphertext yaitu &lt;strong&gt;“flag-0x1”&lt;/strong&gt; sampai &lt;strong&gt;“flag-0x15”&lt;/strong&gt;. Ciphertext ini sudah dienkripsi dengan RSA. Untuk mendapatkan flag nya maka bisa dilakukan dengan cara dekripsi ciphernya.&lt;/p&gt;
+&lt;p&gt;Disini saya menggunakan program python untuk melakukan dekripsi nya, seperti berikut:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;sympy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;_&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# ambil dari hasil netcat tadi_&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;12702921637381668223&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;e&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;65537&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;_&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# Cipher texts_&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;cipher_texts&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;8653543177909262164&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;8129368878150413257&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;10350103832841408363&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;7032331030093581600&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;4782305598758838406&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;2785159304879662933&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;2732051847576006533&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;11794173093819803751&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;11873112032135690728&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;9382562734350058402&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;579065509642778528&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;12332679177220217606&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;11536863561057576902&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;7642099693399375786&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;8458953175633811295&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;_&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# disini difaktorkan nilai n untuk mendapatkan p dan q_&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;q&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sympy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;factorint&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;keys&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;_&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# menghitung nilai phi(n)_&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;phi_n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; \&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;q&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;_&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# menghitung nilai d (private key exponent)_&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;d&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;pow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;phi_n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;_&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# membuat fungsi untuk dekripsi RSA_&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;decrypt_rsa&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;pow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;_&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# proses meendekripsi cipher texts_&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;decrypted_flag&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;decrypt_rsa&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cipher_texts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;_&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# mengkonversi hasil dekripsi ke string ASCII_&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;flag&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;join&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;decrypted_value&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;to_bytes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;decrypted_value&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bit_length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;big&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;decode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;decrypted_value&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;decrypted_flag&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Flag:&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;flag&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Pada kode diatas, saya menggunakan library Pythonyaitu sympy untuk memfaktorkan n, kemudian isa mendekripsi setiap bagian dari flag yang diberikan.&lt;/p&gt;
+&lt;p&gt;Setelah saya jalankan program nya, maka muncul flag dari soal ini&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-5.png&#34;
+	width=&#34;607&#34;
+	height=&#34;410&#34;
+	srcset=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-5_hu6024173716136899270.png 480w, https://example.com/p/zerobyte-ctf-2024-writeup/image-5_hu7153312066327407923.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-5&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;148&#34;
+		data-flex-basis=&#34;355px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;flag: Flag: 0byteCTF{Congratz!___Th3_M0st_B4s1c_RSA_1s_s0_34sy_Right?}&lt;/p&gt;
+&lt;h4 id=&#34;conclusion&#34;&gt;Conclusion
+&lt;/h4&gt;&lt;p&gt;Di soal ini melibatkan sebuah dekripsi flag yang telah dienkripsi menggunakan algoritma RSA. Selain itu diberikan nilai n (modulus), e (eksponen publik), dan beberapa cipher text (bagian-bagian dari flag yang terenkripsi) ketika menjalankan netcat nya.&lt;/p&gt;
+&lt;p&gt;Untuk menyelesaikannya, mencari nilai n terlebih dahulu dengan cara faktorisasi untuk mendapatkan bilangan prima ‘p’ dan ‘n’. Selanjutnya menghitung eksponen private (d) menggunakan rumus phi(n) = (p - 1) * (q - 1), lalu gunakan nilai ‘e’ dan ‘phi(n)’ untuk menghitung eksponen privat d dengan rumus d = e^(-1) mod phi(n). Setelah mendapatkan eksponen private ‘d’nya, maka lanjut dengan deskripsi cipher text dengan rumus ‘m = c^d mod n’. Setelah di deskripsi (dari format numerik), agar flag tersebut bisa terbaca maka dikonversi ke format string.&lt;/p&gt;
+&lt;h2 id=&#34;boot2root&#34;&gt;Boot2root
+&lt;/h2&gt;&lt;h3 id=&#34;-sembunyi-&#34;&gt;[ Sembunyi ]
+&lt;/h3&gt;&lt;p&gt;Note: Untuk soal ini, setelah saya submit flag tersebut, sialnya saya tidak membaca terlebih dahulu untuk peraturan boot2root ini. Peraturan di boot2root ini tidak boleh dengan cara bypass password root. Jadi cara yg saya lakukan ini salah&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-6.png&#34;
+	width=&#34;490&#34;
+	height=&#34;606&#34;
+	srcset=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-6_hu8347118558048757547.png 480w, https://example.com/p/zerobyte-ctf-2024-writeup/image-6_hu17545019817784520187.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-6&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;80&#34;
+		data-flex-basis=&#34;194px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;executive-summary-1&#34;&gt;Executive Summary
+&lt;/h4&gt;&lt;p&gt;Di soal ini dengan kategori boot2root, tidak ada hint untuk menyelesaikan flag nya. Hanya terdapat sebuah link soal dan juga password zip. Isi dari link tersebut merupakan file dengan format .7z&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-7.png&#34;
+	width=&#34;1544&#34;
+	height=&#34;579&#34;
+	srcset=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-7_hu836636798525897985.png 480w, https://example.com/p/zerobyte-ctf-2024-writeup/image-7_hu14579316571976569270.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-7&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;266&#34;
+		data-flex-basis=&#34;640px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Setelah saya download file arsip tersebut, terdapat sebuah file dengan format .ova&lt;/p&gt;
+&lt;p&gt;Format .ova ini intinya itu sama kayak file ZIP gitu, tapi isinya bukan dokumen atau gambar, melainkan sebuah sistem operasi lengkap dengan aplikasinya, biasanya untuk virtual mesin. Dalam konteks ini, berarti sebuah virtual mesin yang sudah siapkan untuk mencari flag nya. Mesin ini harus dipasang pada laptop/pc masing-masing. Disini saya menggunakan Virtual Box.&lt;/p&gt;
+&lt;h4 id=&#34;technical-report-1&#34;&gt;Technical Report
+&lt;/h4&gt;&lt;p&gt;Untuk menyelesaikan flag nya, pertama import file .ova ke software virtual machine, salah satunya virtual box.&lt;/p&gt;
+&lt;p&gt;Untuk Caranya di virtualbox, klik file-&amp;gt;Import Appliance-&amp;gt;Lalu masukan file .ova tadi-&amp;gt;klik next-&amp;gt;finish. Maka hasilnya akan seperti berikut&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-8.png&#34;
+	width=&#34;1311&#34;
+	height=&#34;578&#34;
+	srcset=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-8_hu4534939789723378857.png 480w, https://example.com/p/zerobyte-ctf-2024-writeup/image-8_hu3682704608644409630.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-8&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;226&#34;
+		data-flex-basis=&#34;544px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Setelah itu Lanjut dengan klik Start.&lt;/p&gt;
+&lt;p&gt;Setelah mesin nya dijalankan, maka akan menampilkan login server nya&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-9.png&#34;
+	width=&#34;806&#34;
+	height=&#34;650&#34;
+	srcset=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-9_hu3624789726069530352.png 480w, https://example.com/p/zerobyte-ctf-2024-writeup/image-9_hu5947891715119943502.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-9&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;124&#34;
+		data-flex-basis=&#34;297px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Disini saya belum tau username dan password, dan di hint juga tidak ditemukan. Untuk mendapatkan flag ini saya mencoba melakukan masuk ke akun root melalui recovery mode.&lt;/p&gt;
+&lt;p&gt;Untuk masuk ke recovery mode, caranya mematikan mesin nya terlebih dahulu, setelah itu jalankan kembali mesin nya dan dibarengi dengan tekan shift. Setelah itu masuk ke ‘advance options for ubuntu’, lalu pilih yang recovery mode, dan akan muncul tampilan seperti berikut&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-10.png&#34;
+	width=&#34;725&#34;
+	height=&#34;417&#34;
+	srcset=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-10_hu16177227376393755280.png 480w, https://example.com/p/zerobyte-ctf-2024-writeup/image-10_hu13584917964101290278.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-10&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;173&#34;
+		data-flex-basis=&#34;417px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Di recovery menu ini, pilih bagian menu root. Maka akan langsung masuk sebagai root. Selanjut nya saya cek isi user pada mesin dengan cara ‘ls /home’, dan hasilnya terdapat 3 user yaitu ‘bambang’, ‘musaceous’, dan ‘ubuntu’.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-11.png&#34;
+	width=&#34;722&#34;
+	height=&#34;159&#34;
+	srcset=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-11_hu16917809457044187274.png 480w, https://example.com/p/zerobyte-ctf-2024-writeup/image-11_hu12082062110782098773.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-11&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;454&#34;
+		data-flex-basis=&#34;1089px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Selanjutnya saya mencoba ganti password dari salah satu user tersebut,awalnya mencoba mengannti user bambang, tetapi ketika login, user bambang ini tiba2 keluar lagi. Lalu saya mencoba user musaceous, tetapi tidak melakukan sudo. Akhirnya saya mencoba mengganti user ubuntu dengan cara ‘passwd ubuntu’.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-12.png&#34;
+	width=&#34;724&#34;
+	height=&#34;259&#34;
+	srcset=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-12_hu7700674068447200926.png 480w, https://example.com/p/zerobyte-ctf-2024-writeup/image-12_hu2575892930699549414.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-12&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;279&#34;
+		data-flex-basis=&#34;670px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Setelah mengganti password, maka keluar dari user root dengan ketik ‘exit’ dan akan ditampilakn kembali recovery menu. Di recover menu pilih ‘resume’ dan klik ‘ok’.&lt;/p&gt;
+&lt;p&gt;Setelah itu masuk sebagai ubuntu, dan masukan password nya baru tadi&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-13.png&#34;
+	width=&#34;458&#34;
+	height=&#34;51&#34;
+	srcset=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-13_hu8696754768670653173.png 480w, https://example.com/p/zerobyte-ctf-2024-writeup/image-13_hu11425896000841957353.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-13&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;898&#34;
+		data-flex-basis=&#34;2155px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Setelah berhasil login, selanjutnya mencari flag pada server dengan menggunakan perintah find dan grep, seperti ‘find /* | grep “flag.txt”&lt;/p&gt;
+&lt;p&gt;Perintah tersebut gunanya nyari file yang namanya &amp;ldquo;flag.txt&amp;rdquo; (dari perintah grep “flag.txt”) di SEMUA folder (karna pake /*) di mesin ini. Karna mencari nya di semua folder, maka menggunakan sudo agar tetep bisa akses meskpun folder tersebut hanya bisa diakses oleh root / superuser.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-14.png&#34;
+	width=&#34;725&#34;
+	height=&#34;84&#34;
+	srcset=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-14_hu7649882472934238854.png 480w, https://example.com/p/zerobyte-ctf-2024-writeup/image-14_hu17057268939676922744.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-14&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;863&#34;
+		data-flex-basis=&#34;2071px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Dari hasil pencarian, terdapat sebuah flag di folder root ‘/root/flag.txt’. Jadi sebenarnya tadi bisa saja langsung akses melalui recover mode, cuman ntah kenapa yang saya lakukan ketika mencoba mengerjakan soal ini saya mencoba mencari nya dengan user terlebih dahulu.&lt;/p&gt;
+&lt;p&gt;Sekarang tinggal lihat isi flag nya dengan perintah ‘sudo /root/flag.txt’&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-15.png&#34;
+	width=&#34;720&#34;
+	height=&#34;158&#34;
+	srcset=&#34;https://example.com/p/zerobyte-ctf-2024-writeup/image-15_hu13799922023736399882.png 480w, https://example.com/p/zerobyte-ctf-2024-writeup/image-15_hu16341656796735100321.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-15&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;455&#34;
+		data-flex-basis=&#34;1093px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;terdapat isi flag nya&lt;/p&gt;
+&lt;p&gt;flag:0byteCTF{nUS4NT4RA_y4n9_d!SeMBuNY!k4N_de2cd143b4}&lt;/p&gt;
+&lt;h4 id=&#34;conclusion-1&#34;&gt;Conclusion
+&lt;/h4&gt;&lt;p&gt;Kesimpulan dari soal ini sebenarnya kita harus mencari terlebih dahulu network yg digunakan, celah apa yang ada di mesin ini, dan lainnya. Tetapi disini saya salah dengan cara menjawab soal ini, yang saya gunakan untuk menyelesaikan ini lebih tepatnya ketika mau mengganti password/lupa password os linux pada pc/laptop, sehingga mengganti dengan cara recover mode :(&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

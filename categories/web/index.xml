@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Web on R3zp3ct0r</title>
+        <link>https://example.com/categories/web/</link>
+        <description>Recent content in Web on R3zp3ct0r</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>R3zp3ct0r</copyright>
+        <lastBuildDate>Sat, 12 Oct 2024 16:54:04 +0700</lastBuildDate><atom:link href="https://example.com/categories/web/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>[Cyber Strike Competition 1.0 CTF 2024] - Web</title>
+        <link>https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/</link>
+        <pubDate>Sat, 12 Oct 2024 16:54:04 +0700</pubDate>
+        
+        <guid>https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/</guid>
+        <description>&lt;img src="https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-50.png" alt="Featured image of post [Cyber Strike Competition 1.0 CTF 2024] - Web" /&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-1.png&#34;
+	width=&#34;2008&#34;
+	height=&#34;1577&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-1_hu1485692534006786489.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-1_hu13918773768607908103.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Cyber Strike Competition 1.0&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;127&#34;
+		data-flex-basis=&#34;305px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;web-exploit&#34;&gt;Web-Exploit
+&lt;/h1&gt;&lt;h2 id=&#34;file-not-found&#34;&gt;File Not Found
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-45.png&#34;
+	width=&#34;509&#34;
+	height=&#34;423&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-45_hu5866817679376737835.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-45_hu729777901934035205.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-45&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;120&#34;
+		data-flex-basis=&#34;288px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Pada soal ini, hanya ada link web target dan juga hint untuk path flag nya.&lt;/p&gt;
+&lt;p&gt;Ketika saya akses web nya, tampilan nya seperti ini:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-46.png&#34;
+	width=&#34;852&#34;
+	height=&#34;212&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-46_hu13594517682322038446.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-46_hu8827976859900555657.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-46&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;401&#34;
+		data-flex-basis=&#34;964px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Terlihat ada informasi bahwa file tidak ada “file not found”. Tetapi ketika saya ubah parameter nya menjadi /abc, maka tampilan error seperti ini:
+&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-47.png&#34;
+	width=&#34;721&#34;
+	height=&#34;202&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-47_hu18257162495007235799.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-47_hu17200519896906728114.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-47&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;356&#34;
+		data-flex-basis=&#34;856px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Berarti file index.php tadi hanya berisi “fake not found”.&lt;/p&gt;
+&lt;p&gt;Selain itu pada url target, terlihat seperti vulnerability terhadap local file inclusion”index.php?file=index.php”&lt;/p&gt;
+&lt;p&gt;Oke disini saya mencoba LFI menggunakan ektension Hackbar, pilih LFI-&amp;gt;Using wrapper-&amp;gt;php://filter&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-48.png&#34;
+	width=&#34;1298&#34;
+	height=&#34;596&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-48_hu4545966223637466065.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-48_hu6920908033045564992.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-48&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;217&#34;
+		data-flex-basis=&#34;522px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;page=php://filter/read=string.rot13/resource=index.php&lt;/p&gt;
+&lt;p&gt;pada bagian “page=” diubah menjadi “file=”, sehingga lengkap nya seperti ini&lt;/p&gt;
+&lt;p&gt;http://103.187.106.138:11101/index.php?file=php://filter/read=string.rot13/resource=index.php&lt;/p&gt;
+&lt;p&gt;Setelah di eksekusi, ada tampilan error seperti berikut&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-49.png&#34;
+	width=&#34;1037&#34;
+	height=&#34;566&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-49_hu3546910547283429247.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-49_hu3632496065806539957.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-49&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;439px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Terlihat juga file path website tersebut, disini saya langsung coba memanggil index.php nya sesuai deksripsi soal “/home/flag.txt”&lt;/p&gt;
+&lt;p&gt;http://103.187.106.138:11101/index.php?file=php://filter/read=string.rot13/resource=/home/flag.txt&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-50.png&#34;
+	width=&#34;1035&#34;
+	height=&#34;568&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-50_hu15972494147942426090.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-50_hu8285366170717429710.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-50&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;182&#34;
+		data-flex-basis=&#34;437px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Muncul flag nya PGS{&lt;em&gt;Y0p4Y_s!Y3&lt;/em&gt;!apYhg!0a_} , tetapi ini masih belum terbaca flag aslinya. jadi perlu tahapan nya lagi. Selanjutnya disini saya cek cipher flag nya menggunakan web &lt;a class=&#34;link&#34; href=&#34;https://www.dcode.fr/cipher-identifier&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.dcode.fr/cipher-identifier&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-51.png&#34;
+	width=&#34;790&#34;
+	height=&#34;555&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-51_hu18098254592660974039.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-51_hu3309630763547197264.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-51&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;142&#34;
+		data-flex-basis=&#34;341px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Hasil dari cipher identifier, bahwa kemungkinan flag tersebut menggunakan affine cipher.&lt;/p&gt;
+&lt;p&gt;selanjutnya disini saya coba decode dengan affine cipher &lt;a class=&#34;link&#34; href=&#34;https://www.dcode.fr/affine-cipher&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.dcode.fr/affine-cipher&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-52.png&#34;
+	width=&#34;800&#34;
+	height=&#34;512&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-52_hu7261645204607415354.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-52_hu3579890850089714196.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-52&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;156&#34;
+		data-flex-basis=&#34;375px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Sekarang coba scroll ke bawah, dan ada flag nya&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-53.png&#34;
+	width=&#34;289&#34;
+	height=&#34;151&#34;
+	srcset=&#34;https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-53_hu9218684334395091384.png 480w, https://example.com/p/cyber-strike-competition-1.0-ctf-2024-web/image-53_hu15338016882864527627.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-53&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;191&#34;
+		data-flex-basis=&#34;459px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;flag: CTF{&lt;em&gt;L0c4L_f!L3&lt;/em&gt;!ncLut!0n_}&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

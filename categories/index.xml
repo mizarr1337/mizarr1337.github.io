@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Categories on R3zp3ct0r</title>
+        <link>https://example.com/categories/</link>
+        <description>Recent content in Categories on R3zp3ct0r</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>R3zp3ct0r</copyright>
+        <lastBuildDate>Sun, 10 Nov 2024 19:00:07 +0700</lastBuildDate><atom:link href="https://example.com/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Cryptography</title>
+        <link>https://example.com/categories/cryptography/</link>
+        <pubDate>Sun, 10 Nov 2024 19:00:07 +0700</pubDate>
+        
+        <guid>https://example.com/categories/cryptography/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>CTF Writeup</title>
+        <link>https://example.com/categories/ctf-writeup/</link>
+        <pubDate>Sun, 10 Nov 2024 19:00:07 +0700</pubDate>
+        
+        <guid>https://example.com/categories/ctf-writeup/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>PWN</title>
+        <link>https://example.com/categories/pwn/</link>
+        <pubDate>Sun, 10 Nov 2024 19:00:07 +0700</pubDate>
+        
+        <guid>https://example.com/categories/pwn/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Reverse Engineering</title>
+        <link>https://example.com/categories/reverse-engineering/</link>
+        <pubDate>Sun, 10 Nov 2024 19:00:07 +0700</pubDate>
+        
+        <guid>https://example.com/categories/reverse-engineering/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Web Exploit</title>
+        <link>https://example.com/categories/web-exploit/</link>
+        <pubDate>Sun, 10 Nov 2024 19:00:07 +0700</pubDate>
+        
+        <guid>https://example.com/categories/web-exploit/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Forensic</title>
+        <link>https://example.com/categories/forensic/</link>
+        <pubDate>Sat, 12 Oct 2024 16:54:04 +0700</pubDate>
+        
+        <guid>https://example.com/categories/forensic/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Reverse</title>
+        <link>https://example.com/categories/reverse/</link>
+        <pubDate>Sat, 12 Oct 2024 16:54:04 +0700</pubDate>
+        
+        <guid>https://example.com/categories/reverse/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Stegano</title>
+        <link>https://example.com/categories/stegano/</link>
+        <pubDate>Sat, 12 Oct 2024 16:54:04 +0700</pubDate>
+        
+        <guid>https://example.com/categories/stegano/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Web</title>
+        <link>https://example.com/categories/web/</link>
+        <pubDate>Sat, 12 Oct 2024 16:54:04 +0700</pubDate>
+        
+        <guid>https://example.com/categories/web/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Boot2Root</title>
+        <link>https://example.com/categories/boot2root/</link>
+        <pubDate>Sun, 18 Aug 2024 23:19:20 +0700</pubDate>
+        
+        <guid>https://example.com/categories/boot2root/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

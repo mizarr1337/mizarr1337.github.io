@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Command Injection on R3zp3ct0r</title>
+        <link>https://example.com/tags/command-injection/</link>
+        <description>Recent content in Command Injection on R3zp3ct0r</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>R3zp3ct0r</copyright>
+        <lastBuildDate>Sun, 10 Nov 2024 19:00:07 +0700</lastBuildDate><atom:link href="https://example.com/tags/command-injection/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>[TSA Cyber Champion 2024] - Web Exploit 101 Writeup</title>
+        <link>https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/</link>
+        <pubDate>Sun, 10 Nov 2024 19:00:07 +0700</pubDate>
+        
+        <guid>https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/</guid>
+        <description>&lt;img src="https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-8.png" alt="Featured image of post [TSA Cyber Champion 2024] - Web Exploit 101 Writeup" /&gt;&lt;h2 id=&#34;deskripsi-soal&#34;&gt;Deskripsi Soal
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-1.png&#34;
+	width=&#34;498&#34;
+	height=&#34;576&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-1_hu7980812653958201358.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-1_hu13615997088751221968.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Deskripsi Soal&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;86&#34;
+		data-flex-basis=&#34;207px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Soal ini hanya memberikan sebuah tautan (link) website tanpa deskripsi tambahan, sehingga pendekatan &lt;em&gt;blackbox testing&lt;/em&gt; diperlukan.&lt;/p&gt;
+&lt;p&gt;URL: &lt;a class=&#34;link&#34; href=&#34;https://cyberchampion-web-101.chals.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://cyberchampion-web-101.chals.io/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Mirror: &lt;a class=&#34;link&#34; href=&#34;http://103.196.154.155:20000/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://103.196.154.155:20000/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Tampilan awal website:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-2.png&#34;
+	width=&#34;1677&#34;
+	height=&#34;775&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-2_hu15695235751139090962.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-2_hu1532974203654761838.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Tampilan Awal Website&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;216&#34;
+		data-flex-basis=&#34;519px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Website ini memiliki dua menu utama: &amp;ldquo;Ping&amp;rdquo; dan &amp;ldquo;File Up&amp;rdquo;.&lt;/p&gt;
+&lt;h2 id=&#34;analisis-awal&#34;&gt;Analisis Awal
+&lt;/h2&gt;&lt;h3 id=&#34;menu-ping&#34;&gt;Menu Ping
+&lt;/h3&gt;&lt;p&gt;Menu &amp;ldquo;Ping&amp;rdquo; memiliki dua potensi kerentanan:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Local File Inclusion (LFI):&lt;/strong&gt; Parameter &lt;code&gt;page&lt;/code&gt; pada URL &lt;code&gt;https://cyberchampion-web-101.chals.io/index.php?page=ping.php&lt;/code&gt; terlihat mencurigakan dan mungkin rentan terhadap LFI.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Command Injection:&lt;/strong&gt; Input pada fitur &amp;ldquo;Ping&amp;rdquo; mungkin rentan terhadap Command Injection.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-3.png&#34;
+	width=&#34;777&#34;
+	height=&#34;285&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-3_hu6179307717205852435.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-3_hu12117208165289738767.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Menu Ping&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;272&#34;
+		data-flex-basis=&#34;654px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;eksplorasi-lfi&#34;&gt;Eksplorasi LFI
+&lt;/h3&gt;&lt;p&gt;Mencoba mengakses URL &lt;code&gt;https://cyberchampion-web-101.chals.io/index.php?page=&lt;/code&gt; menghasilkan pesan error yang mengungkapkan path website: &lt;code&gt;/var/www/html/pages/&lt;/code&gt;. Ini mengonfirmasi bahwa website menggunakan fungsi &lt;code&gt;include()&lt;/code&gt; untuk memanggil file.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-4.png&#34;
+	width=&#34;973&#34;
+	height=&#34;263&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-4_hu1150904939054216548.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-4_hu15807979704106314845.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Error Path Website&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;369&#34;
+		data-flex-basis=&#34;887px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Dengan informasi ini, dicoba melakukan &lt;em&gt;path traversal&lt;/em&gt; untuk mengakses file sensitif, seperti &lt;code&gt;/etc/passwd&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;https://cyberchampion-web-101.chals.io/index.php?page=../../../../etc/passwd&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-5.png&#34;
+	width=&#34;832&#34;
+	height=&#34;264&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-5_hu17832950063620436247.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-5_hu8749205146926982104.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Eksploitasi LFI Berhasil&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;315&#34;
+		data-flex-basis=&#34;756px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Eksploitasi LFI berhasil, yang berarti website ini memiliki celah LFI.&lt;/p&gt;
+&lt;h3 id=&#34;percobaan-yang-gagal&#34;&gt;Percobaan yang Gagal
+&lt;/h3&gt;&lt;p&gt;Beberapa percobaan berikut dilakukan, namun tidak berhasil:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Mencoba menggunakan wrapper dengan Burp Suite dan ekstensi Hackbar.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-6.png&#34;
+	width=&#34;1618&#34;
+	height=&#34;659&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-6_hu1612964307277773090.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-6_hu9303570840852504562.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Percobaan Wrapper Gagal&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;245&#34;
+		data-flex-basis=&#34;589px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mencoba mengakses &lt;code&gt;/proc/self/environ&lt;/code&gt; (berdasarkan referensi dari &lt;a class=&#34;link&#34; href=&#34;https://www.exploit-db.com/papers/12886&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.exploit-db.com/papers/12886&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-7.png&#34;
+	width=&#34;1596&#34;
+	height=&#34;514&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-7_hu490933264677683242.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-7_hu10625754033677876299.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Percobaan /proc/self/environ Gagal&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;310&#34;
+		data-flex-basis=&#34;745px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;eksplorasi-command-injection&#34;&gt;Eksplorasi Command Injection
+&lt;/h3&gt;&lt;p&gt;Mencoba fitur &amp;ldquo;Ping&amp;rdquo; dengan input &lt;code&gt;google.com&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-8.png&#34;
+	width=&#34;758&#34;
+	height=&#34;373&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-8_hu10060859751123397682.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-8_hu81034446577222333.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Fitur Ping dengan Input google.com&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;203&#34;
+		data-flex-basis=&#34;487px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Fitur ini tampaknya mengeksekusi perintah &amp;ldquo;ping&amp;rdquo;. Dicoba melakukan Command Injection dengan input:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;google.com; id&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-9.png&#34;
+	width=&#34;281&#34;
+	height=&#34;108&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-9_hu13612152219862616298.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-9_hu16028082166529626076.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Percobaan Command Injection&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;260&#34;
+		data-flex-basis=&#34;624px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Input ini seharusnya mengeksekusi perintah &lt;code&gt;ping&lt;/code&gt; dan &lt;code&gt;id&lt;/code&gt;. Jika dicoba di Linux, hasilnya akan seperti ini:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-10.png&#34;
+	width=&#34;291&#34;
+	height=&#34;247&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-10_hu5556938891964985071.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-10_hu15820666804947470286.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Hasil Command Injection di Linux&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;117&#34;
+		data-flex-basis=&#34;282px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Namun, ketika dicoba pada website, hasilnya kosong (blank).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-11.png&#34;
+	width=&#34;374&#34;
+	height=&#34;280&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-11_hu3963820020989934312.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-11_hu2583321909551439773.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Hasil Command Injection di Website&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;133&#34;
+		data-flex-basis=&#34;320px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Berbagai upaya &lt;em&gt;bypass&lt;/em&gt; dicoba, tetapi tidak berhasil.&lt;/p&gt;
+&lt;h3 id=&#34;menu-file-up&#34;&gt;Menu File Up
+&lt;/h3&gt;&lt;p&gt;Karena upaya sebelumnya tidak berhasil, dicoba menu &amp;ldquo;File Up&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-12.png&#34;
+	width=&#34;625&#34;
+	height=&#34;284&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-12_hu10676449027472784628.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-12_hu15468130776471393655.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Menu File Up&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;220&#34;
+		data-flex-basis=&#34;528px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Mencoba mengunggah file gambar.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-13.png&#34;
+	width=&#34;741&#34;
+	height=&#34;300&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-13_hu5041712593092117186.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-13_hu2952920143083442391.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Mengunggah File Gambar&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;247&#34;
+		data-flex-basis=&#34;592px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Setelah di-submit, tidak ada informasi apakah file berhasil diunggah atau tidak, dan tidak ada informasi lokasi file jika berhasil diunggah.&lt;/p&gt;
+&lt;h3 id=&#34;eksploitasi-file-upload&#34;&gt;Eksploitasi File Upload
+&lt;/h3&gt;&lt;p&gt;Menggunakan Burp Suite untuk menganalisis proses upload. Awalnya, mencoba mengunggah file dengan nama yang sama (&amp;ldquo;sad.jpg&amp;rdquo;), tetapi gagal. Kemudian, mencoba dengan nama &amp;ldquo;sad1.jpg&amp;rdquo; dan berhasil.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-14.png&#34;
+	width=&#34;1594&#34;
+	height=&#34;642&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-14_hu8820712039754715381.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-14_hu1418344124571543340.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Upload File Berhasil&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;248&#34;
+		data-flex-basis=&#34;595px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Pesan &amp;ldquo;Image Successfully uploaded!&amp;rdquo; dan tautan ke file yang diunggah diberikan:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;http://cyberchampion-web-101.chals.io/uploads/b234baed21817d689650251d80d39293.jpg&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Mengakses tautan tersebut menunjukkan bahwa file berhasil diunggah.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-15.png&#34;
+	width=&#34;1201&#34;
+	height=&#34;947&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-15_hu16899567143331864898.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-15_hu16583090773604267711.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;File yang Diunggah Berhasil Diakses&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;126&#34;
+		data-flex-basis=&#34;304px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;eksploitasi-lanjutan-lfi-to-rce&#34;&gt;Eksploitasi Lanjutan (LFI to RCE)
+&lt;/h2&gt;&lt;p&gt;Mengacu pada artikel tentang memanfaatkan LFI untuk mencapai RCE:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://outpost24.com/blog/from-local-file-inclusion-to-remote-code-execution-part-2/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://outpost24.com/blog/from-local-file-inclusion-to-remote-code-execution-part-2/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Artikel tersebut menjelaskan bagaimana menggabungkan LFI dan File Upload untuk mencapai RCE. Kode PHP disisipkan ke dalam file gambar, kemudian diunggah. Selanjutnya, LFI digunakan untuk mengakses file gambar tersebut dan mengeksekusi kode PHP yang ada di dalamnya.&lt;/p&gt;
+&lt;h3 id=&#34;bypass-dengan-header-gif98a&#34;&gt;Bypass dengan Header &amp;ldquo;GIF98a;&amp;rdquo;
+&lt;/h3&gt;&lt;p&gt;Mencoba &lt;em&gt;bypass&lt;/em&gt; dengan menyisipkan header &amp;ldquo;GIF98a;&amp;rdquo; (berdasarkan referensi dari &lt;a class=&#34;link&#34; href=&#34;https://github.com/malware-d/template/blob/master/example_attack/Bypassing%20File%20Upload%20Restrictions.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/malware-d/template/blob/master/example_attack/Bypassing%20File%20Upload%20Restrictions.md&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-16.png&#34;
+	width=&#34;1055&#34;
+	height=&#34;427&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-16_hu18134232229131582244.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-16_hu13662098877883371498.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Menyisipkan Header GIF98a&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;247&#34;
+		data-flex-basis=&#34;592px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;File &lt;code&gt;sad.jpg&lt;/code&gt; diubah dengan menghapus semua isinya dan menggantinya dengan kode PHP yang disisipkan header &amp;ldquo;GIF98a;&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-17.png&#34;
+	width=&#34;660&#34;
+	height=&#34;245&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-17_hu13412883958529010618.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-17_hu6992845578388605726.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Modifikasi File sad.jpg&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;269&#34;
+		data-flex-basis=&#34;646px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Mencoba mengakses file melalui LFI dengan menambahkan parameter &lt;code&gt;cmd&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;https://cyberchampion-web-101.chals.io/index.php?page=../uploads/9c090a873b2789d317eb5bb5fe165329.jpg?cmd=id&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Hasilnya gagal.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-18.png&#34;
+	width=&#34;1379&#34;
+	height=&#34;297&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-18_hu17557472295336210088.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-18_hu12252070000548053648.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Percobaan LFI dengan Parameter cmd Gagal&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;464&#34;
+		data-flex-basis=&#34;1114px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Kemudian, mencoba dengan format yang berbeda:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;https://cyberchampion-web-101.chals.io/index.php?page=../uploads/9c090a873b2789d317eb5bb5fe165329.jpg&amp;amp;cmd=id&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-19.png&#34;
+	width=&#34;583&#34;
+	height=&#34;163&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-19_hu3494940690945322314.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-19_hu12640457087017812286.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Percobaan LFI Berhasil&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;357&#34;
+		data-flex-basis=&#34;858px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-20.png&#34;
+	width=&#34;993&#34;
+	height=&#34;238&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-20_hu10491088551087631349.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-20_hu12035554478315347447.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Hasil Eksekusi Perintah id&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;417&#34;
+		data-flex-basis=&#34;1001px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Eksploitasi berhasil! Sekarang, dicoba melakukan reverse shell untuk mendapatkan akses yang lebih leluasa.&lt;/p&gt;
+&lt;h3 id=&#34;reverse-shell&#34;&gt;Reverse Shell
+&lt;/h3&gt;&lt;p&gt;Menggunakan &lt;code&gt;ngrok&lt;/code&gt; untuk melakukan port forwarding.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-21.png&#34;
+	width=&#34;763&#34;
+	height=&#34;325&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-21_hu13705587771163491420.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-21_hu13021380809557420006.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Ngrok&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;234&#34;
+		data-flex-basis=&#34;563px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Port 1337 diaktifkan.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-22.png&#34;
+	width=&#34;567&#34;
+	height=&#34;209&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-22_hu12106370213592891489.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-22_hu7203829492376581244.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Port 1337 Aktif&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;271&#34;
+		data-flex-basis=&#34;651px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Menggunakan reverse shell dari Pentest Monkey (&lt;a class=&#34;link&#34; href=&#34;https://www.revshells.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.revshells.com/&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-23.png&#34;
+	width=&#34;1150&#34;
+	height=&#34;956&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-23_hu16161672893998025122.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-23_hu15603415599776431318.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Reverse Shell dari Pentest Monkey&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;120&#34;
+		data-flex-basis=&#34;288px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Skrip reverse shell disesuaikan dengan port yang diberikan oleh &lt;code&gt;ngrok&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-24.png&#34;
+	width=&#34;771&#34;
+	height=&#34;566&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-24_hu2688152595115094042.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-24_hu8645399497434692187.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Skrip Reverse Shell&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;136&#34;
+		data-flex-basis=&#34;326px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Skrip PHP yang diunggah diubah dengan skrip reverse shell. Kemudian, diakses melalui LFI.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-25.png&#34;
+	width=&#34;818&#34;
+	height=&#34;208&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-25_hu7191013532228838915.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-25_hu10684349970912745677.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Akses LFI dengan Reverse Shell&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;393&#34;
+		data-flex-basis=&#34;943px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Netcat mendengarkan pada port 1337.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-26.png&#34;
+	width=&#34;767&#34;
+	height=&#34;418&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-26_hu18053216467936474897.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-26_hu7557944471598692500.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Netcat Menerima Koneksi&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;440px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Reverse shell berhasil!&lt;/p&gt;
+&lt;h3 id=&#34;mencari-flag&#34;&gt;Mencari Flag
+&lt;/h3&gt;&lt;p&gt;Setelah mendapatkan reverse shell, dicari file yang berisi flag.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-27.png&#34;
+	width=&#34;451&#34;
+	height=&#34;39&#34;
+	srcset=&#34;https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-27_hu17796363204874556249.png 480w, https://example.com/p/tsa-cyber-champion-2024-web-exploit-101-writeup/image-27_hu7406944373541704364.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Mencari File Flag&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1156&#34;
+		data-flex-basis=&#34;2775px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Ditemukan file bernama &lt;code&gt;flag&lt;/code&gt;. Langsung saja dicek isinya.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/image-28.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Isi File Flag&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;solusi&#34;&gt;Solusi
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Flag:&lt;/strong&gt; &lt;code&gt;TSA{Web_Hacking_101_c7319b0bd96f9d01981bbf52ebb7027f}&lt;/code&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
